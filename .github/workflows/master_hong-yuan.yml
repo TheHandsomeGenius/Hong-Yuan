@@ -21,6 +21,13 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Set up environment variables
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'package.json'
+        env:
+          keys.cosmoskey: ${{ secrets.AZURE_COSMOSDB_API_KEY }}
+
       - name: npm install, build, and test
         run: |
           npm install
