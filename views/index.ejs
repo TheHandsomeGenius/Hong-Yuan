@@ -1,0 +1,131 @@
+<%- include("header") -%>
+
+
+
+  <div class="container">
+
+<div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-pause="hover" data-bs-interval=3000 data-bs-touch=true>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="p-5 text-white bg-dark rounded-3 carouselPage">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Welcome to Hong Yuan</h1>
+          <p class="col-md-8 fs-4">Worldwide freight forwarding problems resolved in a click*<br>Click on to find out!</p>
+          <br>
+          <p><small>*Exaggerated</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="p-5 bg-light carousel-dark rounded-3 carouselPage">
+        <div class="container-fluid py-5">
+          <p class="col-md-8 fs-4">27/05/22</p>
+          <h1 class="display-5 fw-bold">Our First Website Has Launched!</h1>
+          <p class="col-md-8 fs-4">We are always finding ways to serve you better.<br>Stay tuned for more exciting updates!</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="rounded-3 carouselPage carouselPage3">
+        <div class="container-fluid py-5">
+          <h1 class="fw-bold">Our Services</h1>
+          <table class="col-md-8 fs-4">
+            <tr>
+              <th>International Freight Services</th>
+              <th>Singapore Import Clearance</th>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>By Land, Air, or Sea</li>
+                  <li>Local Pickup in Origin Country</li>
+                  <li>Local Delivery in Destination Country</li>
+                  <li>Temporary Storage</li>
+                  <li>Re-packing/Palletising</li>
+                  <li>Fumigation</li>
+                  <li>Insurance</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Singapore Customs Clearance Permit</li>
+                  <li>Local Delivery</li>
+                  <li>Temporary Storage</li>
+                  <li>Unpacking/Unstuffing</li>
+                </ul>
+              </td>
+            </tr>
+          </table><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+   <div class="indexSecondDiv">
+    <h1>Freight Services</h1>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-lg-4 col-sm-6 indexSecondDivCards">
+        <div class="h-100 p-5 rounded-3 indexSeaCard">
+          <h2>Ship by sea</h2>
+          <p>Recommended for large & heavy cargoes</p>
+          <a href="/freight#sea"><button class="btn btn-outline-light" type="button"><i class="fa-solid fa-ship"></i> Sail away!</button></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 indexSecondDivCards">
+        <div class="h-100 p-5 border rounded-3 indexAirCard">
+          <h2>Ship by air</h2>
+          <p>Recommended for urgent deliveries</p>
+          <a href="/freight#air"><button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-plane"></i> Takeoff!</button></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 indexSecondDivCards">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Ship by courier</h2>
+          <p>Recommended for small & light cargoes</p>
+          <a href="/freight#courier"><button class="btn btn-outline-light" type="button"><i class="fa-solid fa-people-carry-box"></i> Carry on!</button></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 indexSecondDivCards">
+        <div class="h-100 p-5 text-white rounded-3 indexLandCard">
+          <h2>Ship by land*</h2>
+          <p>Available only for neighbouring countries</p>
+          <a href="/freight#land"><button class="btn btn-outline-light" type="button"><i class="fa-solid fa-truck-moving"></i> Drive through!</button></a>
+        </div>
+      </div>
+      <div class="col-lg-8 indexSecondDivCards">
+        <div class="h-100 p-5 rounded-3 indexAdviseCard">
+          <h2>Advise Me</h2>
+          <p>Not sure what to choose? Let us give you a breakdown on your freight options</p>
+          <a href="/freight"><button class="btn btn-secondary indexAdviseBtn" type="button"><i class="fa-solid fa-person-chalkboard"></i> Seek Wisdom</button></a>
+        </div>
+      </div>
+    </div>
+   </div>
+
+
+    <div class="p-5 mb-4 rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Local Clearance (Singapore only)</h1>
+        <p class="col-md-8 fs-4">Need help clearing your cargo from port?<br>We can help you clear customs & deliver your goods to you, anywhere in Singapore</p>
+        <a href="/localclearance"><button class="btn btn-dark btn-lg indexFourthDivBtn" type="button">Clear this button!</button></a>
+      </div>
+    </div>
+
+
+<%- include("footer") -%>

@@ -1,0 +1,24 @@
+<%- include("header") %>
+
+
+
+<% if (!err) { %>
+<div class="successPageBg">
+ <div class="submitPageText">
+  <h3>Thank you for your enquiry!</h3>
+  <p>We will respond to you via email within 48 hours. Please feel free to contact us directly via <a href="/about#contact">email</a> for any urgent requests.</p>
+  <a href="/" class="btn btn-secondary">Back to Home</a>
+ </div>
+</div>
+<% } else { %>
+<div class="failurePageBg">
+ <div class="submitPageText">
+  <h3>An error occurred!</h3>
+  <p>Rest assured, we are working on it. Meanwhile, Please submit your enquiry directly via <a href="/about#contact">email</a> instead.</p>
+  <a href="/" class="btn btn-secondary">Back to Home</a>
+ </div>
+</div>
+<% } %>
+
+
+<%- include("footer") %>

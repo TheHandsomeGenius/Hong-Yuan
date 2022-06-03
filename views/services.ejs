@@ -1,0 +1,342 @@
+<%- include("header") -%>
+
+
+
+<div class="container">
+ <div class="<%= title %>FirstDiv p-5 rounded-3 container-fluid">
+  <h1><%= service %></h1>
+  <h3>Please complete the form below for us to better understand your request.</h3>
+  <p>To note:</p>
+  <ul>
+   <% for (let i=0; i<pointers.length; i++) { %>
+    <li><%= pointers[i] %></li>
+   <% }; %>
+
+   <li>Once submitted, please allow us 48 hours to respond to you via email.</li>
+   <li>Up to 3 relevant documents (i.e. Bill of Lading, Air Waybill, Commercial Invoice etc.) can be attached below, if available. Additional documents may be submitted via email correspondence later.</li>
+
+   <% if (title === "freight") { %>
+   <li>For clearance in Singapore only (no freight), please input your request <a href="/localclearance">here</a> instead.</li>
+   <% } else if (title === "clearance") { %>
+   <li>For complete freight services, please input your request <a href="/freight">here</a> instead.</li>
+   <% }; %>
+
+   <li>For urgent shipments or any other queries, please contact us directly at our email, which can be found <a href='/about#contact'>here</a>.</li>
+  </ul>
+ </div>
+
+
+<hr><br>
+
+<h1><%= service %> Form</h1>
+<div class="<%= title %>SecondDiv p-5 container-fluid">
+ <form action="/<%= page %>" name="info" enctype="multipart/form-data" method="POST">
+  <table class="formTable">
+
+   <tr>
+    <th>Contact</th>
+    <td colspan=3>
+     <div class="row gy-2 gx-3">
+      <div class="col-sm-7">
+       <label class="visually-hidden" for="Name">Company Name / Your Name</label>
+       <input type="text" class="form-control" id="Name" name="Name" placeholder="Company Name / Your Name">
+      </div>
+      <div class="col-md-6">
+       <label class="visually-hidden" for="Email">Email</label>
+       <input type="email" class="form-control" id="Email" name="Email" placeholder="Email (required)" required>
+      </div>
+      <div class="col-sm-5">
+       <label class="visually-hidden" for="Tel">Tel</label>
+       <input type="tel" class="form-control" id="Tel" name="Tel" placeholder="Tel (incl. country code)">
+      </div>
+     </div>
+    </td>
+   </tr>
+
+   <% if (title === "freight") { %>
+   <tr>
+    <th>Pickup</th>
+    <td colspan=3>
+     <div class="row gy-2 gx-3">
+
+      <div class="col-auto">
+       <label class="visually-hidden" for="pickupTerm">Terms</label><abbr title="FOB = Free On Board (from port)">
+       <select class="form-select" id="pickupTerm" name="pickupTerm">
+        <option value="Pickup">Pickup</option>
+        <option value="Drop-off">Drop-off</option>
+        <option value="FOB" selected>FOB</option>
+       </select>
+      </abbr></div>
+      <div class="col-auto">
+       <label for="Country1" class="visually-hidden">Country1</label>
+       <input type="text" class="form-control" id="Country1" name="Country1" placeholder="Country (required)" required>
+      </div>
+      <div class="col-auto">
+       <label class="visually-hidden" for="pickupAddr">Address</label>
+       <input type="text" class="form-control" id="pickupAddr" name="pickupAddr" placeholder="Port">
+      </div>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Delivery</th>
+    <td colspan=3>
+     <div class="row gy-2 gx-3">
+      <div class="col-auto">
+       <label class="visually-hidden" for="deliveryTerm">Terms</label>
+       <select class="form-select" id="deliveryTerm" name="deliveryTerm">
+        <option value="Delivery">Delivery</option>
+        <option value="Self-Collection" selected>Self-Collection</option>
+       </select>
+      </div>
+      <div class="col-auto">
+       <label for="Country2" class="visually-hidden">Country2</label>
+       <input type="text" class="form-control" id="Country2" name="Country2" placeholder="Country (required)" required>
+      </div>
+      <div class="col-md">
+       <label class="visually-hidden" for="deliveryAddr">Address</label>
+       <input type="text" class="form-control" id="deliveryAddr" name="deliveryAddr" placeholder="State">
+      </div>
+     </div>
+    </td>
+   </tr>
+   <% } else if (title === "clearance") { %>
+   <tr>
+    <th>Arrival By</th>
+    <td colspan=3>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="arrivalBy" id="air" value="air" checked>
+      <label class="form-check-label" for="air">Air</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="arrivalBy" id="sea" value="sea">
+      <label class="form-check-label" for="sea">Sea</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="arrivalBy" id="land" value="land">
+      <label class="form-check-label" for="land">Land</label>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Deliver To</th>
+    <td colspan=3>
+     <div class="row gy-2 gx-3">
+      <div class="col-auto">
+       <label class="visually-hidden" for="delivery">Terms</label>
+       <select class="form-select" id="delivery" name="delivery">
+        <option value="Delivery" selected>Delivery</option>
+        <option value="No Delivery">No Delivery</option>
+       </select>
+      </div>
+      <div class="col-lg">
+       <label class="visually-hidden" for="deliverTo">Address</label>
+       <input type="text" class="form-control" id="deliverTo" name="deliverTo" placeholder="Address">
+      </div>
+     </div>
+    </td>
+   </tr>
+   <% }; %>
+
+   <tr>
+    <th>Number of Packages</th>
+    <td colspan=3>
+     <div class="row gy-2 gx-3">
+      <div class="col-auto">
+       <label class="visually-hidden" for="NoP">Number of Packages</label>
+       <input type="number" class="form-control" id="NoP" name="NoP" placeholder="No. of Packages" min=1 required>
+      </div>
+      <div class="col-auto">
+       <label class="visually-hidden" for="pkgUnit">Unit</label>
+       <select class="form-select" id="pkgUnit" name="NoP">
+        <option value="Piece" selected>Piece</option>
+        <option value="20'">20' Cntr</option>
+        <option value="40'">40' Cntr</option>
+        <option value="Box">Box</option>
+        <option value="Carton">Carton</option>
+        <option value="Crate">Crate</option>
+        <option value="Pallet">Pallet</option>
+        <option value="Other'">Other</option>
+       </select>
+      </div>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Gross Weight</th>
+    <td colspan=3 class="gWeight">
+     <div class="row gy-2 gx-3">
+      <div class="col-auto">
+       <label class="visually-hidden" for="tWeight">Total Weight</label>
+       <input type="number" class="form-control" id="tWeight" placeholder="Total Weight" name="tWeight" step=0.1 min=0.5 required>
+      </div>
+      <div class="col-auto">
+       <label class="visually-hidden" for="tWeightUnit">Unit</label>
+       <select class="form-select" id="tWeightUnit" name="tWeight">
+        <option value="kg" selected>kg</option>
+        <option value="ton">ton</option>
+        <option value="lb">lb</option>
+       </select>
+      </div>
+     </div>
+     <a href="#gWeightCollapse" class="btn" data-bs-toggle="collapse"><u>Or, enter package weight individually (preferred)</u></a>
+     <div class="row gy-2 gx-3 collapse gWeight" id="gWeightCollapse">
+      <div class="col-auto">
+       <label class="visually-hidden" for="pkgWeight">Gross Weight</label>
+       <input type="number" class="form-control" id="pkgWeight" placeholder="Package 1 Weight" name="pkgWeight" step=0.1 min=0.5>
+      </div>
+      <div class="col-auto">
+       <label class="visually-hidden" for="pkgWeightUnit">Unit</label>
+       <select class="form-select" id="pkgWeightUnit" name="pkgWeight">
+        <option value="kg" selected>kg</option>
+        <option value="ton">ton</option>
+        <option value="lb">lb</option>
+       </select>
+      </div>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Dimensions</th>
+    <td colspan=3 class="dimInput">
+     <div class="row gy-2 gx-3 align-items-center">
+      <div class="input-group">
+       <input type="number" class="form-control" name="totalVol" placeholder="Total Volume" step=0.001 min=0.001 required>
+       <label class="visually-hidden" for="tVolUnit">Unit</label>
+       <select class="form-select" id="tVolUnit" name="totalVol">
+        <option value="m3" selected>m3</option>
+        <option value="ft3">ft3</option>
+       </select>
+      </div>
+     </div>
+
+     <a href="#dimInputCollapse" class="btn" data-bs-toggle="collapse"><u>Or, enter package dimensions individually (preferred)</u></a>
+     <div class="row gy-2 gx-3 align-items-center collapse dimInput" id="dimInputCollapse">
+      <div class="input-group">
+       <input type="number" class="form-control" name="pkgLBH" placeholder="Package 1 Length" step=0.01 min=0.01>
+       <span class="input-group-text">X</span>
+       <input type="number" class="form-control" name="pkgLBH" placeholder="Package 1 Breadth" step=0.01 min=0.01>
+       <span class="input-group-text">X</span>
+       <input type="number" class="form-control" name="pkgLBH" placeholder="Package 1 Height" step=0.01 min=0.01>
+       <label class="visually-hidden" for="pkgLBHUnit">Unit</label>
+       <select class="form-select" id="pkgLBHUnit" name="pkgLBH">
+        <option value="cm" selected>cm</option>
+        <option value="m">m</option>
+        <option value="in">in</option>
+        <option value="ft">ft</option>
+       </select>
+      </div>
+      <div class="input-group">
+       <input type="number" class="form-control" name="pkgVol" placeholder="Package 1 Volume" step=0.001 min=0.001>
+       <label class="visually-hidden" for="pkgVolUnit">Unit</label>
+       <select class="form-select" id="pkgVolUnit" name="pkgVol">
+        <option value="m3" selected>m3</option>
+        <option value="ft3">ft3</option>
+       </select>
+      </div>
+      <div class="input-group">
+      </div>
+     </div>
+    </td>
+   </tr>
+
+   <% if (title === "freight") { %>
+   <tr>
+    <th>Mode of Transport<br>(Preferred)</th>
+    <td colspan=3>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="Sea" value="sea" name="mode">
+      <label class="form-check-label" for="Sea">Sea</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="Air" value="air" name="mode">
+      <label class="form-check-label" for="Air">Air</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="Courier" value="courier" name="mode">
+      <label class="form-check-label" for="Courier">Courier</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="Land" value="land" name="mode">
+      <label class="form-check-label" for="Land">Land*</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="None" value="any" name="mode" checked>
+      <label class="form-check-label" for="None">No Preference</label>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Re-packing / Palletising</th>
+    <td>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="repacking" id="yes" value=true>
+      <label class="form-check-label" for="yes">Yes</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="repacking" id="no" value=false checked>
+      <label class="form-check-label" for="no">No</label>
+     </div>
+    </td>
+
+    <th>Insurance</th>
+    <td>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="insurance" id="yes" value=true>
+      <label class="form-check-label" for="yes">Yes</label>
+     </div>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="insurance" id="no" value=false checked>
+      <label class="form-check-label" for="no">No</label>
+     </div>
+    </td>
+   </tr>
+   <% }; %>
+
+   <tr>
+    <th>Commodity</th>
+    <td colspan=3>
+     <textarea name="commodity" placeholder="Please add a brief description of your cargo here" required></textarea>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Remarks</th>
+    <td colspan=3>
+     <textarea name="remarks"></textarea>
+    </td>
+   </tr>
+
+   <tr>
+    <th>Documents (if any)</th>
+    <td colspan=3>
+     <div class="input-group mb-3 docs">
+      <input type="file" class="form-control" id="file" name="docs">
+      <label class="visually-hidden" for="file">Upload</label>
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td colspan=4>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="confirm" required>
+      <label class="form-check-label" for="confirm">I did not submit this form accidentally.</label>
+     </div>
+    </td>
+   </tr>
+  </table>
+  <button class="btn btn-primary submit" type="submit">Submit</button>
+ </form>
+</div>
+
+
+
+
+
+<%- include("footer") -%>
