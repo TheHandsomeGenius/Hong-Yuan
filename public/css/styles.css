@@ -83,21 +83,6 @@ td {
  vertical-align:top;
 }
 
-@media only screen and (max-width:768px) {
- .carouselPage {
-  height:auto;
- }
- .carouselPage3 h1 {
-  margin:0 0 20px 10px;
- }
- td {
-  font-size:12px;
- }
- .indexSecondDiv h1 {
-  font-size:2rem;
- }
-}
-
 .carousel-control-prev,.carousel-control-next {
  max-width:5%;
 }
@@ -160,6 +145,21 @@ td {
  animation-name:clearEffect;
  animation-duration:4s;
  opacity:0;
+}
+
+@media only screen and (max-width:768px) {
+ .carouselPage {
+  height:auto;
+ }
+ .carouselPage3 h1 {
+  margin:0 0 20px 10px;
+ }
+ td {
+  font-size:12px;
+ }
+ .indexSecondDiv h1 {
+  font-size:2rem;
+ }
 }
 
 /*End index styles*/
