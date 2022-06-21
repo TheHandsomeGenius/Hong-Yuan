@@ -3,16 +3,17 @@ var router = express.Router();
 var formidable = require("formidable");
 var fs = require("fs");
 
+var year = new Date().getFullYear();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
  let page = "index";
- res.render("index",{page:page});
+ res.render("index",{page:page,year:year});
 });
 
 router.get('/about', function(req, res, next) {
  let page = "index";
- res.render("about",{page:page});
+ res.render("about",{page:page,year:year});
 });
 
 router.get('/freight', function(req, res, next) {
@@ -24,7 +25,7 @@ router.get('/freight', function(req, res, next) {
  pointers[1] = "Do note that all prices offered are subject to changes on actual weight & dimensions, please fill in as much information as you can so that we can give you a more accurate quote.";
  pointers[2] = "*Land transport is limited only to neighbouring countries (i.e. Singapore/Malaysia).";
 
- res.render("services",{page:page,title:title,service:service,pointers:pointers});
+ res.render("services",{page:page,title:title,service:service,pointers:pointers,year:year});
 });
 
 router.get('/localclearance', function(req, res, next) {
@@ -35,7 +36,7 @@ router.get('/localclearance', function(req, res, next) {
  pointers[0] = "Many freight services end at the port of destination country. The local clearance service allows you to clear your cargo from customs (and pay the appropriate duties & taxes) and deliver the goods to you anywhere in Singapore.";
  pointers[1] = "Please note that this service is only available in Singapore only";
 
- res.render("services",{page:page,title:title,service:service,pointers:pointers});
+ res.render("services",{page:page,title:title,service:service,pointers:pointers,year:year});
 });
 
 
@@ -273,12 +274,12 @@ createDatabase()
      exit(`Completed successfully`);
     };
     let page = "index";
-    res.render("submitted", {page:page,err:error});
+    res.render("submitted", {page:page,err:error,year:year});
   })
   .catch(err => {
     exit(err);
     let page = "index";
-    res.render("submitted", {page:page,err:true});
+    res.render("submitted", {page:page,err:true,year:year});
   })
 
   if (err) {
@@ -516,12 +517,12 @@ createDatabase()
      exit(`Completed successfully`);
     };
     let page = "index";
-    res.render("submitted", {page:page,err:error});
+    res.render("submitted", {page:page,err:error,year:year});
   })
   .catch(err => {
     exit(err);
     let page = "index";
-    res.render("submitted", {page:page,err:true});
+    res.render("submitted", {page:page,err:true,year:year});
   })
 
   if (err) {
